@@ -13,6 +13,14 @@ apps:
     -  opengl
     -  wayland
 
+  daemon:
+    command: run-daemon wayland-launch $SNAP/usr/bin/glmark2-wayland --fullscreen
+    daemon: simple
+    restart-condition: always
+    plugs:
+    -  opengl
+    -  wayland
+
 environment:
   LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}:${SNAP}/usr/lib/:${SNAP}/usr/lib/${SNAPCRAFT_ARCH_TRIPLET}/
   PATH: $SNAP/bin/:$SNAP/usr/bin/:${PATH}
